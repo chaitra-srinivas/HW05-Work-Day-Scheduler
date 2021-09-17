@@ -3,30 +3,30 @@
 var $timeDisplayEl = $("#time-display");
 var $eventInputEl = $("#event-input");
 var $saveBtnEl = $(".saveBtn");
+var $hourEl = $(".hour");
 
-var newEvent = localStorage.getItem("event-name");
-$eventInputEl.text(newEvent);
+// Populates data stored in local storage on page reload
+getSavedEvents();
 
 // Displays the current date and time
 $timeDisplayEl.text(moment().format("dddd MMM DD, YYYY [at] hh:mm:ss a"));
 
+// Each time save button is clicked the value in the text area is and the corresponding id is saved to the local storage
 $saveBtnEl.on("click", function () {
-  var eventTime = $(this).parent().attr("id");
-  var textValue = $(this).siblings("#event-input").val();
-  localStorage.setItem(eventTime, textValue);
-  console.log(eventTime + textValue + "Setting values");
+    var eventTime = $(this).parent().attr("id");
+    var textValue = $(this).siblings("#event-input").val();
+    localStorage.setItem(eventTime, textValue);
+    console.log(eventTime + textValue + "Setting values");
 });
 
-function refreshPage() {
-    $eventInputEl.each(function () {
-    var eventTime = $(this).parent().attr("id");
-    var textValue = localStorage.getItem(eventTime);
 
-    if(textValue !== null){
-       $(this).val(textValue);
-       /*  $(this).siblings(".description").val(textValue); */
-    }
-    console.log(eventTime + textValue + "Getting values");
-  });
+function getSavedEvents() {
+    $hourEl.each(function () {
+        var eventTime = $(this).parent().attr("id");
+        var textValue = localStorage.getItem(eventTime);
+        if (textValue !== null) {
+            $(this).siblings("#event-input").text(textValue);
+        }
+    });
 }
-refreshPage();
+
