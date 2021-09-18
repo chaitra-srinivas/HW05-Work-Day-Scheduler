@@ -13,12 +13,11 @@ checkIfCurHour(); // Checks if the time block is in the past/present/future
 // Displays the current date and time
 $timeDisplayEl.text(moment().format("dddd MMM DD, YYYY [at] hh:mm:ss a"));
 
-// Each time save button is clicked the value in the text area and the corresponding id is saved to the local storage
+// Each time save button is clicked the value in the text area and the corresponding id is saved to local storage
 $saveBtnEl.on("click", function () {
     var eventTime = $(this).parent().attr("id");
     var textValue = $(this).siblings("#event-input").val();
     localStorage.setItem(eventTime, textValue);
-    console.log(eventTime + textValue + "Setting values");
 });
 
 function getSavedEvents() {
@@ -31,7 +30,7 @@ function getSavedEvents() {
     });
 }
 
-// Check if hour is current, past or present
+// Check if hour is current, past or future
 function checkIfCurHour() {
     var currHour = "hour" + moment().hours();
     $timeBlockEl.each(function () {
