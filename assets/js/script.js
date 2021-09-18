@@ -30,24 +30,24 @@ function getSavedEvents() {
     });
 }
 
-// Check if hour is current, past or future
+// Check if hour is current, past or future and color code the timeblock accordingly
 function checkIfCurHour() {
-    var currHour = "hour" + moment().hours();
+    var currHour = moment().hours();
     $timeBlockEl.each(function () {
-        var blockHour = $(this).attr("id")
-
-        if (blockHour > currHour) {
-            $(this).removeClass("present");
-            $(this).addClass("past");
-            $(this).addClass("future");
-        } else if (blockHour < currHour) {
-            $(this).removeClass("present");
-            $(this).removeClass("future");
-            $(this).addClass("past");
-        } else if (blockHour === currHour) {
-            $(this).removeClass("future");
-            $(this).removeClass("past");
-            $(this).addClass("present");
+        var blockHour = $(this).data("hour");
+ 
+        function getBlockStyle() {
+            if (blockHour > currHour) {
+                return "future";
+            } else if (blockHour < currHour) {
+                return "past";
+            } else if (blockHour === currHour) {
+                    return "present";
+            }
         }
+
+        $(this).removeClass("present past future");
+        $(this).addClass(getBlockStyle());
     });
 }
+
