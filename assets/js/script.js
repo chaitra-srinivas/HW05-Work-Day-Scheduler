@@ -30,7 +30,7 @@ function getSavedEvents() {
     });
 }
 
-// Check if hour is current, past or future and color code the timeblock accordingly
+// Check if hour is current, past or future and color codes the timeblock accordingly
 function checkIfCurHour() {
     var currHour = moment().hours();
     $timeBlockEl.each(function () {
@@ -50,4 +50,6 @@ function checkIfCurHour() {
         $(this).addClass(getBlockStyle());
     });
 }
+
+
 
