@@ -12,5 +12,5 @@ Screen shots:
 
 
 
-1. ![Deployed application]: https://chaitra-srinivas.github.io/HW05-Work-Day-Scheduler/
-2. ![Github link]: https://github.com/chaitra-srinivas/HW05-Work-Day-Scheduler
+1. ![Deployed application]: https://chaitra-srinivas.github.io/Work-Day-Scheduler/
+2. ![Github link]: https://github.com/chaitra-srinivas/Work-Day-Scheduler
